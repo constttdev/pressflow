@@ -5,7 +5,10 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "github": "https://github.com/constttdev/pressflow",
+  "repository": {
+    "url": "git+https://github.com/constttdev/pressflow.git",
+    "type": "git"
+  },
   "bin": "./dist/index.js",
   "scripts": {
     "build": "tsup"
