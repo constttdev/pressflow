@@ -14,11 +14,12 @@
     "build": "tsup"
   },
   "keywords": [
-    "flow",
-    "press",
     "component",
-    "simple",
-    "advanced"
+    "hono",
+    "svelte",
+    "discordjs",
+    "cli",
+    "generator"
   ],
   "author": "constt",
   "license": "MIT",
