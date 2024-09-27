@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { select, cancel } from "@clack/prompts";
+import { select, cancel, text } from "@clack/prompts";
 import { handler as svelteHandler } from "./handler/svelte";
 import { handler as discordjsHandler } from "./handler/discordjs";
 import { handler as honoHandler } from "./handler/hono";
