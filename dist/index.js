@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -5,6 +6,10 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
@@ -21,8 +26,14 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.ts
+var src_exports = {};
+__export(src_exports, {
+  main: () => main
+});
+module.exports = __toCommonJS(src_exports);
 var import_prompts = require("@clack/prompts");
 
 // src/handler/svelte.ts
@@ -54,27 +65,32 @@ function handler4() {
 
 // src/index.ts
 async function main() {
-  const selectFramework = await (0, import_prompts.select)({
-    message: "Pick a framework",
-    options: [
-      { value: "svelte", label: "Svelte \u{1F525}" },
-      { value: "discordjs", label: "DiscordJS \u{1F916}" },
-      { value: "expressjs", label: "ExpressJS \u{1F517}" },
-      { value: "hono", label: "Hono \u26A1" }
-    ]
-  });
-  if (selectFramework === "svelte") {
-    handler();
-  }
-  if (selectFramework === "discordjs") {
-    handler2();
-  }
-  if (selectFramework === "expressjs") {
-    handler4();
-  }
-  if (selectFramework === "hono") {
-    handler3();
+  if (process.argv[2] === "gen") {
+    const selectFramework = await (0, import_prompts.select)({
+      message: "Pick a framework",
+      options: [
+        { value: "svelte", label: "Svelte \u{1F525}" },
+        { value: "discordjs", label: "DiscordJS \u{1F916}" },
+        { value: "expressjs", label: "ExpressJS \u{1F517}" },
+        { value: "hono", label: "Hono \u26A1" }
+      ]
+    });
+    if (selectFramework === "svelte") {
+      handler();
+    }
+    if (selectFramework === "discordjs") {
+      handler2();
+    }
+    if (selectFramework === "expressjs") {
+      handler4();
+    }
+    if (selectFramework === "hono") {
+      handler3();
+    }
   }
 }
 main();
-module.exports = main;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  main
+});
