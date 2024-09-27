@@ -5,6 +5,7 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "github": "https://github.com/constttdev/pressflow",
   "scripts": {
     "build": "tsup"
   },
