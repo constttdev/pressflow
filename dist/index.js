@@ -34,7 +34,7 @@ __export(src_exports, {
   main: () => main
 });
 module.exports = __toCommonJS(src_exports);
-var import_prompts = require("@clack/prompts");
+var import_prompts2 = require("@clack/prompts");
 
 // src/handler/svelte.ts
 function handler() {
@@ -46,15 +46,67 @@ function handler2() {
 
 // src/handler/hono.ts
 var import_fs = __toESM(require("fs"));
-function handler3() {
-  import_fs.default.readdir(__dirname, (err, files) => {
+var import_path = __toESM(require("path"));
+var import_prompts = require("@clack/prompts");
+async function handler3() {
+  const componentName = await (0, import_prompts.text)({
+    message: "Whats the components name?",
+    placeholder: "Example",
+    validate(value) {
+      if (value.length === 0) return `Value is required!`;
+    }
+  });
+  const workingDir = String(process.cwd());
+  import_fs.default.readdir(workingDir, (err, files) => {
     if (err) {
       console.error("Error reading directory:", err);
     } else {
-      console.log("\nCurrent directory filenames:");
+      let hasSrcFolder = false;
       files.forEach((file) => {
-        console.log(file);
+        const stats = import_fs.default.statSync(file);
+        if (stats.isDirectory()) {
+          if (file === "src") {
+            hasSrcFolder = true;
+          }
+        }
       });
+      if (hasSrcFolder) {
+        import_fs.default.mkdirSync(import_path.default.join(workingDir, "src", "routes"));
+        const filePath = import_path.default.join(
+          workingDir,
+          "src",
+          "routes",
+          `${String(componentName)}.ts`
+        );
+        const newRoute = import_path.default.join(
+          __dirname,
+          "../",
+          "templates",
+          "hono",
+          "newRoute.ts"
+        );
+        import_fs.default.readFile(newRoute, "utf8", (err2, data) => {
+          if (err2) {
+            console.log(
+              "This route already exsists, please choose another name!"
+            );
+            return;
+          }
+          const replacedData = String(data).replaceAll(
+            "{{componentName}}",
+            String(componentName)
+          );
+          import_fs.default.writeFileSync(filePath, replacedData);
+          console.log(
+            `Sucesfully created the route named ${String(componentName)}`
+          );
+          console.log("Thanks \u2764\uFE0F for choosing PressFlow");
+        });
+      } else {
+        console.log(
+          "This Project is not a valid project or didnt get setup right!"
+        );
+      }
     }
   });
 }
@@ -66,7 +118,7 @@ function handler4() {
 // src/index.ts
 async function main() {
   if (process.argv[2] === "gen") {
-    const selectFramework = await (0, import_prompts.select)({
+    const selectFramework = await (0, import_prompts2.select)({
       message: "Pick a framework",
       options: [
         { value: "svelte", label: "Svelte \u{1F525}" },
