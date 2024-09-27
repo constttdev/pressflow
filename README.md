@@ -6,6 +6,11 @@
 
 Helps you quickly add components to projects
 
+## Installation
+
+To globaly install this package use this Command `npm install -g pressflow`
+To install the package just for the project you are working on use this Command `npx pressflow`
+
 ## Documentation
 
 To generate a component run the command `pressflow gen`
