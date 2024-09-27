@@ -54,10 +54,16 @@ export async function handler() {
             String(componentName)
           );
           fs.writeFileSync(filePath, replacedData);
+          console.log(
+            `Sucesfully created the route named ${String(componentName)!}`
+          );
+          console.log("Thanks ❤️ for choosing PressFlow");
         });
       } else {
         // src doesnt exsit
-        console.log("SRC Doesnt exsit");
+        console.log(
+          "This Project is not a valid project or didnt get setup right!"
+        );
       }
     }
   });
