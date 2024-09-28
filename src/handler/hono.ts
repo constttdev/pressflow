@@ -27,17 +27,19 @@ export async function handler() {
       });
       if (hasSrcFolder) {
         // src exists
-        const workingDirSRC = path.join(String(process.cwd()));
+        const workingDirSRC = path.join(String(process.cwd()), "src");
         console.log("WorkingDirSRC: " + workingDirSRC);
         fs.readdir(workingDirSRC, (err, filesSRC) => {
           if (err) {
             console.log("Error reading src directory:", err);
           } else {
             let hasRoutesFolder: boolean = false;
-            files.forEach((filesSRC) => {
-              const statsSrc = fs.statSync(filesSRC);
+            files.forEach((fileSRC) => {
+              const statsSrc = fs.statSync(fileSRC);
               if (statsSrc.isDirectory()) {
-                hasRoutesFolder = true;
+                if (fileSRC === "routes") {
+                  hasRoutesFolder = true;
+                }
               }
             });
           }

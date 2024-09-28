@@ -45,17 +45,19 @@ async function handler3() {
         }
       });
       if (hasSrcFolder) {
-        const workingDirSRC = path2.join(String(process.cwd()));
+        const workingDirSRC = path2.join(String(process.cwd()), "src");
         console.log("WorkingDirSRC: " + workingDirSRC);
         fs.readdir(workingDirSRC, (err2, filesSRC) => {
           if (err2) {
             console.log("Error reading src directory:", err2);
           } else {
             let hasRoutesFolder = false;
-            files.forEach((filesSRC2) => {
-              const statsSrc = fs.statSync(filesSRC2);
+            files.forEach((fileSRC) => {
+              const statsSrc = fs.statSync(fileSRC);
               if (statsSrc.isDirectory()) {
-                hasRoutesFolder = true;
+                if (fileSRC === "routes") {
+                  hasRoutesFolder = true;
+                }
               }
             });
           }
