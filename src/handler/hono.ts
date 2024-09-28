@@ -56,6 +56,14 @@ export async function handler() {
           console.log(
             `Sucesfully created the route named ${String(componentName)!}`
           );
+          console.log("");
+          console.log("To now use the route use this example code block:");
+          console.log("");
+          console.log(`import books from './routes/${String(componentName)}'`);
+          console.log("const app = new Hono()");
+          console.log(`app.route('/authors', ${String(componentName)})`);
+          console.log("export default app");
+          console.log("");
           console.log("Thanks ❤️ for choosing PressFlow");
         });
       } else {
