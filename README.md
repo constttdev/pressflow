@@ -6,7 +6,7 @@
 
 # PressFlow
 
-Helps you quickly add components to projects
+Helps you quickly create components in your projects
 
 ## Installation
 
