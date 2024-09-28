@@ -39,7 +39,9 @@ export async function handler() {
     const filePath = path.join(routesDir, `${String(componentName)}.ts`);
     const templatePath = path.join(
       __dirname,
-      "../templates/expressjs/newRoute.ts"
+      "templates",
+      "expressjs",
+      "newRoute.ts"
     );
 
     const templateData = await fsPromises.readFile(templatePath, "utf8");

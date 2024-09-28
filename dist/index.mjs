@@ -38,7 +38,9 @@ async function handler() {
     const filePath = path2.join(libDir, `${String(componentName)}.svelte`);
     const templatePath = path2.join(
       __dirname,
-      "../templates/svelte/component.ts"
+      "templates",
+      "svelte",
+      "component.ts"
     );
     const appHtmlPath = path2.join(srcDir, "app.html");
     const templateData = await fsPromises.readFile(templatePath, "utf8");
@@ -109,8 +111,10 @@ async function handler2() {
       }
       const filePath = path3.join(commandsDir, `${String(componentName)}.ts`);
       const templatePath = path3.join(
-        workingDir,
-        "../templates/discordjs/newCommand.ts"
+        __dirname,
+        "templates",
+        "discordjs",
+        "newCommand.ts"
       );
       const templateData = await fsPromises2.readFile(templatePath, "utf8");
       const replacedData = templateData.replace(
@@ -222,7 +226,12 @@ async function handler3() {
       await fsPromises3.mkdir(routesDir);
     }
     const filePath = path4.join(routesDir, `${String(componentName)}.ts`);
-    const templatePath = path4.join(__dirname, "../templates/hono/newRoute.ts");
+    const templatePath = path4.join(
+      __dirname,
+      "templates",
+      "hono",
+      "newRoute.ts"
+    );
     const templateData = await fsPromises3.readFile(templatePath, "utf8");
     const replacedData = templateData.replace(
       /{{componentName}}/g,
@@ -284,7 +293,9 @@ async function handler4() {
     const filePath = path5.join(routesDir, `${String(componentName)}.ts`);
     const templatePath = path5.join(
       __dirname,
-      "../templates/expressjs/newRoute.ts"
+      "templates",
+      "expressjs",
+      "newRoute.ts"
     );
     const templateData = await fsPromises4.readFile(templatePath, "utf8");
     const replacedData = templateData.replace(

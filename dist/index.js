@@ -64,7 +64,9 @@ async function handler() {
     const filePath = import_path.default.join(libDir, `${String(componentName)}.svelte`);
     const templatePath = import_path.default.join(
       __dirname,
-      "../templates/svelte/component.ts"
+      "templates",
+      "svelte",
+      "component.ts"
     );
     const appHtmlPath = import_path.default.join(srcDir, "app.html");
     const templateData = await fsPromises.readFile(templatePath, "utf8");
@@ -135,8 +137,10 @@ async function handler2() {
       }
       const filePath = import_path2.default.join(commandsDir, `${String(componentName)}.ts`);
       const templatePath = import_path2.default.join(
-        workingDir,
-        "../templates/discordjs/newCommand.ts"
+        __dirname,
+        "templates",
+        "discordjs",
+        "newCommand.ts"
       );
       const templateData = await fsPromises2.readFile(templatePath, "utf8");
       const replacedData = templateData.replace(
@@ -248,7 +252,12 @@ async function handler3() {
       await fsPromises3.mkdir(routesDir);
     }
     const filePath = import_path3.default.join(routesDir, `${String(componentName)}.ts`);
-    const templatePath = import_path3.default.join(__dirname, "../templates/hono/newRoute.ts");
+    const templatePath = import_path3.default.join(
+      __dirname,
+      "templates",
+      "hono",
+      "newRoute.ts"
+    );
     const templateData = await fsPromises3.readFile(templatePath, "utf8");
     const replacedData = templateData.replace(
       /{{componentName}}/g,
@@ -310,7 +319,9 @@ async function handler4() {
     const filePath = import_path4.default.join(routesDir, `${String(componentName)}.ts`);
     const templatePath = import_path4.default.join(
       __dirname,
-      "../templates/expressjs/newRoute.ts"
+      "templates",
+      "expressjs",
+      "newRoute.ts"
     );
     const templateData = await fsPromises4.readFile(templatePath, "utf8");
     const replacedData = templateData.replace(

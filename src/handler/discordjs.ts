@@ -54,8 +54,10 @@ export async function handler() {
 
       const filePath = path.join(commandsDir, `${String(componentName)}.ts`);
       const templatePath = path.join(
-        workingDir,
-        "../templates/discordjs/newCommand.ts"
+        __dirname,
+        "templates",
+        "discordjs",
+        "newCommand.ts"
       );
       const templateData = await fsPromises.readFile(templatePath, "utf8");
       const replacedData = templateData.replace(

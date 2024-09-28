@@ -36,7 +36,12 @@ export async function handler() {
     }
 
     const filePath = path.join(routesDir, `${String(componentName)}.ts`);
-    const templatePath = path.join(__dirname, "../templates/hono/newRoute.ts");
+    const templatePath = path.join(
+      __dirname,
+      "templates",
+      "hono",
+      "newRoute.ts"
+    );
 
     const templateData = await fsPromises.readFile(templatePath, "utf8");
     const replacedData = templateData.replace(
