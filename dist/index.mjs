@@ -109,7 +109,7 @@ async function handler2() {
       }
       const filePath = path3.join(commandsDir, `${String(componentName)}.ts`);
       const templatePath = path3.join(
-        __dirname,
+        workingDir,
         "../templates/discordjs/newCommand.ts"
       );
       const templateData = await fsPromises2.readFile(templatePath, "utf8");
