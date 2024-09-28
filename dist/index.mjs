@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
+}) : x)(function(x) {
+  if (typeof require !== "undefined") return require.apply(this, arguments);
+  throw Error('Dynamic require of "' + x + '" is not supported');
+});
 
 // node_modules/.pnpm/tsup@8.3.0_typescript@5.6.2/node_modules/tsup/assets/esm_shims.js
 import { fileURLToPath } from "url";
@@ -22,6 +28,7 @@ function handler2() {
 import fs from "fs";
 import path2 from "path";
 import { text } from "@clack/prompts";
+var colors = __require("colors");
 async function handler3() {
   const componentName = await text({
     message: "Whats the components name?",
@@ -74,11 +81,19 @@ async function handler3() {
             `Sucesfully created the route named ${String(componentName)}`
           );
           console.log("");
-          console.log("To now use the route use this example code block:");
+          console.log(
+            colors.cyan + "To now use the route use this example code block:"
+          );
           console.log("");
-          console.log(`import books from './routes/${String(componentName)}'`);
+          console.log(
+            `import ${String(componentName)} from './routes/${String(
+              componentName
+            )}'`
+          );
           console.log("const app = new Hono()");
-          console.log(`app.route('/authors', ${String(componentName)})`);
+          console.log(
+            `app.route('/${String(componentName)}', ${String(componentName)})`
+          );
           console.log("export default app");
           console.log("");
           console.log("Thanks \u2764\uFE0F for choosing PressFlow");
