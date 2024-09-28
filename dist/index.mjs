@@ -45,55 +45,118 @@ async function handler3() {
         }
       });
       if (hasSrcFolder) {
-        fs.mkdirSync(path2.join(workingDir, "src", "routes"));
-        const filePath = path2.join(
-          workingDir,
-          "src",
-          "routes",
-          `${String(componentName)}.ts`
-        );
-        const newRoute = path2.join(
-          __dirname,
-          "../",
-          "src",
-          "templates",
-          "hono",
-          "newRoute.ts"
-        );
-        fs.readFile(newRoute, "utf8", (err2, data) => {
+        const workingDirSRC = path2.join(String(process.cwd()), "src");
+        fs.readdir(workingDirSRC, (err2, filesSRC) => {
           if (err2) {
-            console.log(err2);
-            return;
+            console.log("Error reading src directory:", err2);
+          } else {
+            let hasRoutesFolder = false;
+            files.forEach((filesSRC2) => {
+              const statsSrc = fs.statSync(filesSRC2);
+              if (statsSrc.isDirectory()) {
+                hasRoutesFolder = true;
+              }
+            });
           }
-          const replacedData = String(data).replaceAll(
-            "{{componentName}}",
-            String(componentName)
-          );
-          fs.writeFileSync(filePath, replacedData);
-          console.log(
-            `Sucesfully created the route named ${String(componentName)}`
-          );
-          console.log("");
-          console.log(
-            "\x1B[36mTo now use the route use this example code block:\x1B[0m"
-          );
-          console.log("");
-          console.log(
-            `import ${String(componentName)} from './routes/${String(
-              componentName
-            )}'`
-          );
-          console.log("const app = new Hono()");
-          console.log(
-            `app.route('/${String(componentName)}', ${String(componentName)})`
-          );
-          console.log("export default app");
-          console.log("");
-          console.log("Thanks \u2764\uFE0F for choosing PressFlow");
         });
+        if (hasSrcFolder) {
+          const filePath = path2.join(
+            workingDir,
+            "src",
+            "routes",
+            `${String(componentName)}.ts`
+          );
+          const newRoute = path2.join(
+            __dirname,
+            "../",
+            "src",
+            "templates",
+            "hono",
+            "newRoute.ts"
+          );
+          fs.readFile(newRoute, "utf8", (err2, data) => {
+            if (err2) {
+              console.log(err2);
+              return;
+            }
+            const replacedData = String(data).replaceAll(
+              "{{componentName}}",
+              String(componentName)
+            );
+            fs.writeFileSync(filePath, replacedData);
+            console.log(
+              `Sucesfully created the route named ${String(componentName)}`
+            );
+            console.log("");
+            console.log(
+              "\x1B[36mTo now use the route use this example code block:\x1B[0m"
+            );
+            console.log("");
+            console.log(
+              `import ${String(componentName)} from './routes/${String(
+                componentName
+              )}'`
+            );
+            console.log("const app = new Hono()");
+            console.log(
+              `app.route('/${String(componentName)}', ${String(componentName)})`
+            );
+            console.log("export default app");
+            console.log("");
+            console.log("Thanks \u2764\uFE0F for choosing PressFlow");
+          });
+        }
+        if (!hasSrcFolder) {
+          fs.mkdirSync(path2.join(workingDir, "src", "routes"));
+          const filePath = path2.join(
+            workingDir,
+            "src",
+            "routes",
+            `${String(componentName)}.ts`
+          );
+          const newRoute = path2.join(
+            __dirname,
+            "../",
+            "src",
+            "templates",
+            "hono",
+            "newRoute.ts"
+          );
+          fs.readFile(newRoute, "utf8", (err2, data) => {
+            if (err2) {
+              console.log(err2);
+              return;
+            }
+            const replacedData = String(data).replaceAll(
+              "{{componentName}}",
+              String(componentName)
+            );
+            fs.writeFileSync(filePath, replacedData);
+            console.log(
+              `Sucesfully created the route named ${String(componentName)}`
+            );
+            console.log("");
+            console.log(
+              "\x1B[36mTo now use the route use this example code block:\x1B[0m"
+            );
+            console.log("");
+            console.log(
+              `import ${String(componentName)} from './routes/${String(
+                componentName
+              )}'`
+            );
+            console.log("const app = new Hono()");
+            console.log(
+              `app.route('/${String(componentName)}', ${String(componentName)})`
+            );
+            console.log("export default app");
+            console.log("");
+            console.log("Thanks \u2764\uFE0F for choosing PressFlow");
+          });
+        }
       } else {
         console.log(
-          "This Project is not a valid project or didnt get setup right!"
+          "\x1B[31mThis Project is not a valid project or didnt get setup right!\x1B[0m"
         );
       }
     }
