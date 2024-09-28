@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@clack/prompts": "^0.7.0",
+    "colors": "^1.4.0",
     "pressflow": "file:"
   }
 }
