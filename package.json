@@ -1,6 +1,6 @@
 {
   "name": "pressflow",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Helps you quickly add components to projects",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
