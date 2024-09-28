@@ -55,6 +55,7 @@ async function handler3() {
         const newRoute = path2.join(
           __dirname,
           "../",
+          "src",
           "templates",
           "hono",
           "newRoute.ts"

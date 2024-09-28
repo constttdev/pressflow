@@ -81,6 +81,7 @@ async function handler3() {
         const newRoute = import_path.default.join(
           __dirname,
           "../",
+          "src",
           "templates",
           "hono",
           "newRoute.ts"
