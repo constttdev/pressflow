@@ -1,5 +1,8 @@
+[![](assets/banner.png)]
+
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![NPM Version](https://img.shields.io/npm/v/pressflow)
+![Online Discord Users](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Finvites%2FHp8fY4wPww%3Fwith_counts%3Dtrue&query=%24.approximate_presence_count&logo=discord&logoColor=white&color=green&label=Users%20Online)
 ![GitHub Repo stars](https://img.shields.io/github/stars/constttdev/pressflow)
 
 # PressFlow
