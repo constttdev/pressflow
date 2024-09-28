@@ -1,10 +1,4 @@
 #!/usr/bin/env node
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-}) : x)(function(x) {
-  if (typeof require !== "undefined") return require.apply(this, arguments);
-  throw Error('Dynamic require of "' + x + '" is not supported');
-});
 
 // node_modules/.pnpm/tsup@8.3.0_typescript@5.6.2/node_modules/tsup/assets/esm_shims.js
 import { fileURLToPath } from "url";
@@ -28,7 +22,6 @@ function handler2() {
 import fs from "fs";
 import path2 from "path";
 import { text } from "@clack/prompts";
-var colors = __require("colors");
 async function handler3() {
   const componentName = await text({
     message: "Whats the components name?",
@@ -82,7 +75,7 @@ async function handler3() {
           );
           console.log("");
           console.log(
-            colors.cyan + "To now use the route use this example code block:"
+            "\x1B[36mTo now use the route use this example code block:\x1B[0m"
           );
           console.log("");
           console.log(

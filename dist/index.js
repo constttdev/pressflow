@@ -48,7 +48,6 @@ function handler2() {
 var import_fs = __toESM(require("fs"));
 var import_path = __toESM(require("path"));
 var import_prompts = require("@clack/prompts");
-var colors = require("colors");
 async function handler3() {
   const componentName = await (0, import_prompts.text)({
     message: "Whats the components name?",
@@ -102,7 +101,7 @@ async function handler3() {
           );
           console.log("");
           console.log(
-            colors.cyan + "To now use the route use this example code block:"
+            "\x1B[36mTo now use the route use this example code block:\x1B[0m"
           );
           console.log("");
           console.log(

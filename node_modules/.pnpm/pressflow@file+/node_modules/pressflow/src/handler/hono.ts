@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 import { select, cancel, text } from "@clack/prompts";
-var colors = require("colors");
 
 export async function handler() {
   const componentName = await text({
@@ -59,7 +58,7 @@ export async function handler() {
           );
           console.log("");
           console.log(
-            colors.cyan + "To now use the route use this example code block:"
+            "\x1b[36mTo now use the route use this example code block:\x1b[0m"
           );
           console.log("");
           console.log(
