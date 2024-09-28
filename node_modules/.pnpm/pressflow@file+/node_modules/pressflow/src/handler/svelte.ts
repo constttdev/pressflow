@@ -31,6 +31,7 @@ export async function handler() {
     const filePath = path.join(libDir, `${String(componentName)}.svelte`);
     const templatePath = path.join(
       __dirname,
+      "..",
       "templates",
       "svelte",
       "component.ts"
