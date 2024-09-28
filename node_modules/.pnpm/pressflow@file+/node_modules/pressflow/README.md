@@ -15,6 +15,9 @@ To install the package just for the project you are working on use this Command 
 
 ## Documentation
 
+[!WARNING]  
+If you are using **linux** please note that the `pressflow gen` command wont work. Instead use the `npx pressflow gen` command to generate a component!
+
 To generate a component run the command `pressflow gen`
 
 For a list of currently available commands use the command `pressflow help`
