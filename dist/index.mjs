@@ -45,7 +45,8 @@ async function handler3() {
         }
       });
       if (hasSrcFolder) {
-        const workingDirSRC = path2.join(String(process.cwd()), "src");
+        const workingDirSRC = path2.join(String(process.cwd()));
+        console.log("WorkingDirSRC: " + workingDirSRC);
         fs.readdir(workingDirSRC, (err2, filesSRC) => {
           if (err2) {
             console.log("Error reading src directory:", err2);

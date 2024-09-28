@@ -71,7 +71,8 @@ async function handler3() {
         }
       });
       if (hasSrcFolder) {
-        const workingDirSRC = import_path.default.join(String(process.cwd()), "src");
+        const workingDirSRC = import_path.default.join(String(process.cwd()));
+        console.log("WorkingDirSRC: " + workingDirSRC);
         import_fs.default.readdir(workingDirSRC, (err2, filesSRC) => {
           if (err2) {
             console.log("Error reading src directory:", err2);

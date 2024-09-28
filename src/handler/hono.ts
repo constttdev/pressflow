@@ -27,7 +27,8 @@ export async function handler() {
       });
       if (hasSrcFolder) {
         // src exists
-        const workingDirSRC = path.join(String(process.cwd()), "src");
+        const workingDirSRC = path.join(String(process.cwd()));
+        console.log("WorkingDirSRC: " + workingDirSRC);
         fs.readdir(workingDirSRC, (err, filesSRC) => {
           if (err) {
             console.log("Error reading src directory:", err);
