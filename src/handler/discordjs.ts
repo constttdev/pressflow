@@ -85,13 +85,14 @@ export async function handler() {
         }
       }
 
+      // need to make it use outro from @clack/prompts too
       console.log(
         `Successfully created a command named ${String(
           componentName
         )} with the description ${String(componentDescription)}!`
       );
       console.log(
-        "\x1b[36mTo now use the command register it and then use the command handler!\x1b[0m\n"
+        "\x1b[36mTo now use the command create a new folder in the commands directory or move it in one. After that register it and check that you have a command handler!\x1b[0m\n"
       );
       console.log(
         "\x1b[30m\x1b[1mCommand Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1b[0m"
