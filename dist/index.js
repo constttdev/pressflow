@@ -184,7 +184,7 @@ async function handler2() {
         )} with the description ${String(componentDescription)}!`
       );
       console.log(
-        "\x1B[36mTo now use the command register it and then use the command handler!\x1B[0m\n"
+        "\x1B[36mTo now use the command create a new folder in the commands directory or move it in one. After that register it and check that you have a command handler!\x1B[0m\n"
       );
       console.log(
         "\x1B[30m\x1B[1mCommand Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1B[0m"
