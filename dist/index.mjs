@@ -13,7 +13,7 @@ import { select as select5 } from "@clack/prompts";
 // src/handler/svelte.ts
 import fs from "fs";
 import path2 from "path";
-import { text } from "@clack/prompts";
+import { cancel, text, confirm } from "@clack/prompts";
 var fsPromises = fs.promises;
 async function handler() {
   const componentName = await text({
@@ -39,6 +39,7 @@ async function handler() {
     const templatePath = path2.join(
       __dirname,
       "..",
+      "..",
       "templates",
       "svelte",
       "component.ts"
@@ -49,7 +50,18 @@ async function handler() {
       /{{componentName}}/g,
       String(componentName)
     );
-    await fsPromises.writeFile(filePath, replacedData);
+    if (fs.existsSync(filePath)) {
+      const shouldContinue = await confirm({
+        message: "The component you are trying to create already exists, do you want to continue?"
+      });
+      if (shouldContinue) {
+        await fsPromises.writeFile(filePath, replacedData);
+      }
+      if (!shouldContinue) {
+        cancel("Operation cancelled");
+        process.exit(0);
+      }
+    }
     console.log(
       `Successfully created the component named ${String(componentName)}!`
     );
@@ -67,7 +79,7 @@ async function handler() {
 // src/handler/discordjs.ts
 import fs2 from "fs";
 import path3 from "path";
-import { select as select2, text as text2 } from "@clack/prompts";
+import { select as select2, cancel as cancel2, text as text2, confirm as confirm2 } from "@clack/prompts";
 var fsPromises2 = fs2.promises;
 async function handler2() {
   const componentType = await select2({
@@ -110,9 +122,10 @@ async function handler2() {
       if (!hasCommandFolder) {
         await fsPromises2.mkdir(commandsDir);
       }
-      const filePath = path3.join(commandsDir, `${String(componentName)}.ts`);
+      const filePath = path3.join(commandsDir, `${String(componentName)}.js`);
       const templatePath = path3.join(
         __dirname,
+        "..",
         "..",
         "templates",
         "discordjs",
@@ -123,7 +136,22 @@ async function handler2() {
         /{{componentName}}/g,
         String(componentName)
       );
-      await fsPromises2.writeFile(filePath, replacedData);
+      const replacedData2 = replacedData.replace(
+        /{{componentDescription}}/g,
+        String(componentDescription)
+      );
+      if (fs2.existsSync(filePath)) {
+        const shouldContinue = await confirm2({
+          message: "The command you are trying to create already exists, do you want to continue?"
+        });
+        if (shouldContinue) {
+          await fsPromises2.writeFile(filePath, replacedData2);
+        }
+        if (!shouldContinue) {
+          cancel2("Operation cancelled");
+          process.exit(0);
+        }
+      }
       console.log(
         `Successfully created a command named ${String(
           componentName
@@ -169,9 +197,10 @@ async function handler2() {
       if (!hasEventsFolder) {
         await fsPromises2.mkdir(eventsDir);
       }
-      const filePath = path3.join(eventsDir, `${String(componentTrigger)}.ts`);
+      const filePath = path3.join(eventsDir, `${String(componentTrigger)}.js`);
       const templatePath = path3.join(
         __dirname,
+        "..",
         "..",
         "templates",
         "discordjs",
@@ -182,7 +211,18 @@ async function handler2() {
         /{{componentTrigger}}/g,
         String(componentTrigger)
       );
-      await fsPromises2.writeFile(filePath, replacedData);
+      if (fs2.existsSync(filePath)) {
+        const shouldContinue = await confirm2({
+          message: "The event you are trying to create already exists, do you want to continue?"
+        });
+        if (shouldContinue) {
+          await fsPromises2.writeFile(filePath, replacedData);
+        }
+        if (!shouldContinue) {
+          cancel2("Operation cancelled");
+          process.exit(0);
+        }
+      }
       console.log(
         `Successfully created a event with the trigger ${String(
           componentTrigger
@@ -203,7 +243,7 @@ async function handler2() {
 // src/handler/hono.ts
 import fs3 from "fs";
 import path4 from "path";
-import { text as text3 } from "@clack/prompts";
+import { cancel as cancel3, text as text3, confirm as confirm3 } from "@clack/prompts";
 var fsPromises3 = fs3.promises;
 async function handler3() {
   const componentName = await text3({
@@ -234,6 +274,7 @@ async function handler3() {
     const templatePath = path4.join(
       __dirname,
       "..",
+      "..",
       "templates",
       "hono",
       "newRoute.ts"
@@ -243,7 +284,18 @@ async function handler3() {
       /{{componentName}}/g,
       String(componentName)
     );
-    await fsPromises3.writeFile(filePath, replacedData);
+    if (fs3.existsSync(filePath)) {
+      const shouldContinue = await confirm3({
+        message: "The route you are trying to create already exists, do you want to continue?"
+      });
+      if (shouldContinue) {
+        await fsPromises3.writeFile(filePath, replacedData);
+      }
+      if (!shouldContinue) {
+        cancel3("Operation cancelled");
+        process.exit(0);
+      }
+    }
     console.log(
       `Successfully created the route named ${String(componentName)}!`
     );
@@ -268,7 +320,7 @@ async function handler3() {
 // src/handler/expressjs.ts
 import fs4 from "fs";
 import path5 from "path";
-import { text as text4 } from "@clack/prompts";
+import { cancel as cancel4, text as text4, confirm as confirm4 } from "@clack/prompts";
 var fsPromises4 = fs4.promises;
 async function handler4() {
   const componentName = await text4({
@@ -300,6 +352,7 @@ async function handler4() {
     const templatePath = path5.join(
       __dirname,
       "..",
+      "..",
       "templates",
       "expressjs",
       "newRoute.ts"
@@ -309,7 +362,18 @@ async function handler4() {
       /{{componentName}}/g,
       String(componentName)
     );
-    await fsPromises4.writeFile(filePath, replacedData);
+    if (fs4.existsSync(filePath)) {
+      const shouldContinue = await confirm4({
+        message: "The route you are trying to create already exists, do you want to continue?"
+      });
+      if (shouldContinue) {
+        await fsPromises4.writeFile(filePath, replacedData);
+      }
+      if (!shouldContinue) {
+        cancel4("Operation cancelled");
+        process.exit(0);
+      }
+    }
     console.log(
       `Successfully created the route named ${String(componentName)}!`
     );

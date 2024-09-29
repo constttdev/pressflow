@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { select, cancel, text } from "@clack/prompts";
+import { select, cancel, text, confirm } from "@clack/prompts";
 
 const fsPromises = fs.promises;
 
@@ -52,9 +52,10 @@ export async function handler() {
         await fsPromises.mkdir(commandsDir);
       }
 
-      const filePath = path.join(commandsDir, `${String(componentName)}.ts`);
+      const filePath = path.join(commandsDir, `${String(componentName)}.js`);
       const templatePath = path.join(
         __dirname,
+        "..",
         "..",
         "templates",
         "discordjs",
@@ -65,8 +66,24 @@ export async function handler() {
         /{{componentName}}/g,
         String(componentName)
       );
+      const replacedData2 = replacedData.replace(
+        /{{componentDescription}}/g,
+        String(componentDescription)
+      );
 
-      await fsPromises.writeFile(filePath, replacedData);
+      if (fs.existsSync(filePath)) {
+        const shouldContinue = await confirm({
+          message:
+            "The command you are trying to create already exists, do you want to continue?",
+        });
+        if (shouldContinue) {
+          await fsPromises.writeFile(filePath, replacedData2);
+        }
+        if (!shouldContinue) {
+          cancel("Operation cancelled");
+          process.exit(0);
+        }
+      }
 
       console.log(
         `Successfully created a command named ${String(
@@ -120,9 +137,10 @@ export async function handler() {
         await fsPromises.mkdir(eventsDir);
       }
 
-      const filePath = path.join(eventsDir, `${String(componentTrigger)}.ts`);
+      const filePath = path.join(eventsDir, `${String(componentTrigger)}.js`);
       const templatePath = path.join(
         __dirname,
+        "..",
         "..",
         "templates",
         "discordjs",
@@ -134,7 +152,19 @@ export async function handler() {
         String(componentTrigger)
       );
 
-      await fsPromises.writeFile(filePath, replacedData);
+      if (fs.existsSync(filePath)) {
+        const shouldContinue = await confirm({
+          message:
+            "The event you are trying to create already exists, do you want to continue?",
+        });
+        if (shouldContinue) {
+          await fsPromises.writeFile(filePath, replacedData);
+        }
+        if (!shouldContinue) {
+          cancel("Operation cancelled");
+          process.exit(0);
+        }
+      }
 
       console.log(
         `Successfully created a event with the trigger ${String(

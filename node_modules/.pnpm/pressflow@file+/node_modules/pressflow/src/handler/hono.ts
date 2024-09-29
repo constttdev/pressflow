@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { select, cancel, text } from "@clack/prompts";
+import { select, cancel, text, confirm } from "@clack/prompts";
 
 const fsPromises = fs.promises;
 
@@ -39,6 +39,7 @@ export async function handler() {
     const templatePath = path.join(
       __dirname,
       "..",
+      "..",
       "templates",
       "hono",
       "newRoute.ts"
@@ -50,7 +51,19 @@ export async function handler() {
       String(componentName)
     );
 
-    await fsPromises.writeFile(filePath, replacedData);
+    if (fs.existsSync(filePath)) {
+      const shouldContinue = await confirm({
+        message:
+          "The route you are trying to create already exists, do you want to continue?",
+      });
+      if (shouldContinue) {
+        await fsPromises.writeFile(filePath, replacedData);
+      }
+      if (!shouldContinue) {
+        cancel("Operation cancelled");
+        process.exit(0);
+      }
+    }
 
     console.log(
       `Successfully created the route named ${String(componentName)}!`

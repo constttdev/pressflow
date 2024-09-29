@@ -65,6 +65,7 @@ async function handler() {
     const templatePath = import_path.default.join(
       __dirname,
       "..",
+      "..",
       "templates",
       "svelte",
       "component.ts"
@@ -75,7 +76,18 @@ async function handler() {
       /{{componentName}}/g,
       String(componentName)
     );
-    await fsPromises.writeFile(filePath, replacedData);
+    if (import_fs.default.existsSync(filePath)) {
+      const shouldContinue = await (0, import_prompts.confirm)({
+        message: "The component you are trying to create already exists, do you want to continue?"
+      });
+      if (shouldContinue) {
+        await fsPromises.writeFile(filePath, replacedData);
+      }
+      if (!shouldContinue) {
+        (0, import_prompts.cancel)("Operation cancelled");
+        process.exit(0);
+      }
+    }
     console.log(
       `Successfully created the component named ${String(componentName)}!`
     );
@@ -136,9 +148,10 @@ async function handler2() {
       if (!hasCommandFolder) {
         await fsPromises2.mkdir(commandsDir);
       }
-      const filePath = import_path2.default.join(commandsDir, `${String(componentName)}.ts`);
+      const filePath = import_path2.default.join(commandsDir, `${String(componentName)}.js`);
       const templatePath = import_path2.default.join(
         __dirname,
+        "..",
         "..",
         "templates",
         "discordjs",
@@ -149,7 +162,22 @@ async function handler2() {
         /{{componentName}}/g,
         String(componentName)
       );
-      await fsPromises2.writeFile(filePath, replacedData);
+      const replacedData2 = replacedData.replace(
+        /{{componentDescription}}/g,
+        String(componentDescription)
+      );
+      if (import_fs2.default.existsSync(filePath)) {
+        const shouldContinue = await (0, import_prompts2.confirm)({
+          message: "The command you are trying to create already exists, do you want to continue?"
+        });
+        if (shouldContinue) {
+          await fsPromises2.writeFile(filePath, replacedData2);
+        }
+        if (!shouldContinue) {
+          (0, import_prompts2.cancel)("Operation cancelled");
+          process.exit(0);
+        }
+      }
       console.log(
         `Successfully created a command named ${String(
           componentName
@@ -195,9 +223,10 @@ async function handler2() {
       if (!hasEventsFolder) {
         await fsPromises2.mkdir(eventsDir);
       }
-      const filePath = import_path2.default.join(eventsDir, `${String(componentTrigger)}.ts`);
+      const filePath = import_path2.default.join(eventsDir, `${String(componentTrigger)}.js`);
       const templatePath = import_path2.default.join(
         __dirname,
+        "..",
         "..",
         "templates",
         "discordjs",
@@ -208,7 +237,18 @@ async function handler2() {
         /{{componentTrigger}}/g,
         String(componentTrigger)
       );
-      await fsPromises2.writeFile(filePath, replacedData);
+      if (import_fs2.default.existsSync(filePath)) {
+        const shouldContinue = await (0, import_prompts2.confirm)({
+          message: "The event you are trying to create already exists, do you want to continue?"
+        });
+        if (shouldContinue) {
+          await fsPromises2.writeFile(filePath, replacedData);
+        }
+        if (!shouldContinue) {
+          (0, import_prompts2.cancel)("Operation cancelled");
+          process.exit(0);
+        }
+      }
       console.log(
         `Successfully created a event with the trigger ${String(
           componentTrigger
@@ -260,6 +300,7 @@ async function handler3() {
     const templatePath = import_path3.default.join(
       __dirname,
       "..",
+      "..",
       "templates",
       "hono",
       "newRoute.ts"
@@ -269,7 +310,18 @@ async function handler3() {
       /{{componentName}}/g,
       String(componentName)
     );
-    await fsPromises3.writeFile(filePath, replacedData);
+    if (import_fs3.default.existsSync(filePath)) {
+      const shouldContinue = await (0, import_prompts3.confirm)({
+        message: "The route you are trying to create already exists, do you want to continue?"
+      });
+      if (shouldContinue) {
+        await fsPromises3.writeFile(filePath, replacedData);
+      }
+      if (!shouldContinue) {
+        (0, import_prompts3.cancel)("Operation cancelled");
+        process.exit(0);
+      }
+    }
     console.log(
       `Successfully created the route named ${String(componentName)}!`
     );
@@ -326,6 +378,7 @@ async function handler4() {
     const templatePath = import_path4.default.join(
       __dirname,
       "..",
+      "..",
       "templates",
       "expressjs",
       "newRoute.ts"
@@ -335,7 +388,18 @@ async function handler4() {
       /{{componentName}}/g,
       String(componentName)
     );
-    await fsPromises4.writeFile(filePath, replacedData);
+    if (import_fs4.default.existsSync(filePath)) {
+      const shouldContinue = await (0, import_prompts4.confirm)({
+        message: "The route you are trying to create already exists, do you want to continue?"
+      });
+      if (shouldContinue) {
+        await fsPromises4.writeFile(filePath, replacedData);
+      }
+      if (!shouldContinue) {
+        (0, import_prompts4.cancel)("Operation cancelled");
+        process.exit(0);
+      }
+    }
     console.log(
       `Successfully created the route named ${String(componentName)}!`
     );
