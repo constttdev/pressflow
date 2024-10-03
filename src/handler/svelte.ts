@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { select, cancel, text, confirm } from "@clack/prompts";
+import { select, cancel, text, confirm, outro } from "@clack/prompts";
 
 const fsPromises = fs.promises;
 
@@ -59,15 +59,13 @@ export async function handler() {
       }
     }
 
-    console.log(
-      `Successfully created the component named ${String(componentName)}!`
+    outro(
+      `Successfully created the component named ${String(
+        componentName
+      )}!\n\x1b[36mTo now use the component, add this line of code from below to your +layoute.svelte in your routes folder\x1b[0m\n<${String(
+        componentName
+      )}></${String(componentName)}>\n\nThanks ❤️ for choosing PressFlow`
     );
-    console.log(
-      "\x1b[36mTo now use the component, add this line of code from below to your +layoute.svelte in your routes folder\x1b[0m\n"
-    );
-    console.log(`<${String(componentName)}></${String(componentName)}>`);
-    console.log("");
-    console.log("\nThanks ❤️ for choosing PressFlow");
   } catch (err) {
     console.error("\x1b[30m\x1b[1mError:", err + "\x1b[0m");
   }

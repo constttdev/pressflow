@@ -13,7 +13,7 @@ import { select as select5 } from "@clack/prompts";
 // src/handler/svelte.ts
 import fs from "fs";
 import path2 from "path";
-import { cancel, text, confirm } from "@clack/prompts";
+import { cancel, text, confirm, outro } from "@clack/prompts";
 var fsPromises = fs.promises;
 async function handler() {
   const componentName = await text({
@@ -62,15 +62,17 @@ async function handler() {
         process.exit(0);
       }
     }
-    console.log(
-      `Successfully created the component named ${String(componentName)}!`
+    outro(
+      `Successfully created the component named ${String(
+        componentName
+      )}!
+\x1B[36mTo now use the component, add this line of code from below to your +layoute.svelte in your routes folder\x1B[0m
+<${String(
+        componentName
+      )}></${String(componentName)}>
+
+Thanks \u2764\uFE0F for choosing PressFlow`
     );
-    console.log(
-      "\x1B[36mTo now use the component, add this line of code from below to your +layoute.svelte in your routes folder\x1B[0m\n"
-    );
-    console.log(`<${String(componentName)}></${String(componentName)}>`);
-    console.log("");
-    console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
   } catch (err) {
     console.error("\x1B[30m\x1B[1mError:", err + "\x1B[0m");
   }
@@ -79,7 +81,7 @@ async function handler() {
 // src/handler/discordjs.ts
 import fs2 from "fs";
 import path3 from "path";
-import { select as select2, cancel as cancel2, text as text2, confirm as confirm2 } from "@clack/prompts";
+import { select as select2, cancel as cancel2, text as text2, confirm as confirm2, outro as outro2 } from "@clack/prompts";
 var fsPromises2 = fs2.promises;
 async function handler2() {
   const componentType = await select2({
@@ -152,21 +154,18 @@ async function handler2() {
           process.exit(0);
         }
       }
-      console.log(
-        `Successfully created a command named ${String(
+      outro2(
+        `Sucessfully created command name ${String(
           componentName
-        )} with the description ${String(componentDescription)}!`
+        )} with description ${String(
+          componentDescription
+        )}
+\x1B[36mTo now use the command create a new folder in the commands directory or move it in one. After that register it and check that you have a command handler!\x1B[0m
+\x1B[30m\x1B[1mCommand Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1B[0m
+\x1B[30m\x1B[1mCommand Register: https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands\x1B[0m
+
+Thanks \u2764\uFE0F for choosing PressFlow`
       );
-      console.log(
-        "\x1B[36mTo now use the command create a new folder in the commands directory or move it in one. After that register it and check that you have a command handler!\x1B[0m\n"
-      );
-      console.log(
-        "\x1B[30m\x1B[1mCommand Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1B[0m"
-      );
-      console.log(
-        "\x1B[30m\x1B[1mCommand Register: https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands\x1B[0m"
-      );
-      console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
     } catch (e) {
       console.log("\x1B[31m\x1B[1mError: " + e + "\x1B[0m");
     }
@@ -223,17 +222,15 @@ async function handler2() {
           process.exit(0);
         }
       }
-      console.log(
-        `Successfully created a event with the trigger ${String(
+      outro2(
+        `Sucessfully created a event with the trigger ${String(
           componentTrigger
-        )}!`
+        )}!
+\x1B[36mTo now use the event, just start the bot!\x1B[0m
+\x1B[30m\x1B[1mEvent Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1B[0m
+
+Thanks \u2764\uFE0F for choosing PressFlow`
       );
-      console.log("\x1B[36mTo now use the event, just start the bot!\x1B[0m\n");
-      console.log(
-        "\x1B[30m\x1B[1mEvent Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1B[0m"
-      );
-      console.log("");
-      console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
     } catch (e) {
       console.log("\x1B[31m\x1B[1mError: " + e + "\x1B[0m");
     }
@@ -243,7 +240,7 @@ async function handler2() {
 // src/handler/hono.ts
 import fs3 from "fs";
 import path4 from "path";
-import { cancel as cancel3, text as text3, confirm as confirm3 } from "@clack/prompts";
+import { cancel as cancel3, text as text3, confirm as confirm3, outro as outro3 } from "@clack/prompts";
 var fsPromises3 = fs3.promises;
 async function handler3() {
   const componentName = await text3({
@@ -296,22 +293,26 @@ async function handler3() {
         process.exit(0);
       }
     }
-    console.log(
-      `Successfully created the route named ${String(componentName)}!`
+    outro3(
+      `Successfully created the route named ${String(
+        componentName
+      )}!
+\x1B[36mTo now use the route, use this example code block:\x1B[0m
+import ${String(
+        componentName
+      )} from './routes/${String(
+        componentName
+      )}
+const app = new Hono();
+app.route('/${String(
+        componentName
+      )}', ${String(
+        componentName
+      )});
+export default app;
+
+Thanks \u2764\uFE0F for choosing PressFlow`
     );
-    console.log(
-      "\x1B[36mTo now use the route, use this example code block:\x1B[0m\n"
-    );
-    console.log(
-      `import ${String(componentName)} from './routes/${String(componentName)}'`
-    );
-    console.log("const app = new Hono();");
-    console.log(
-      `app.route('/${String(componentName)}', ${String(componentName)});`
-    );
-    console.log("export default app;");
-    console.log("");
-    console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
   } catch (err) {
     console.error("\x1B[30m\x1B[1mError:", err + "\x1B[0m");
   }
@@ -320,7 +321,7 @@ async function handler3() {
 // src/handler/expressjs.ts
 import fs4 from "fs";
 import path5 from "path";
-import { cancel as cancel4, text as text4, confirm as confirm4 } from "@clack/prompts";
+import { cancel as cancel4, text as text4, confirm as confirm4, outro as outro4 } from "@clack/prompts";
 var fsPromises4 = fs4.promises;
 async function handler4() {
   const componentName = await text4({
@@ -374,22 +375,26 @@ async function handler4() {
         process.exit(0);
       }
     }
-    console.log(
-      `Successfully created the route named ${String(componentName)}!`
+    outro4(
+      `Successfully created the route named ${String(
+        componentName
+      )}!
+\x1B[36mTo now use the route, use this example code block:\x1B[0m
+import ${String(
+        componentName
+      )} from './routes/${String(
+        componentName
+      )}
+const app = express.Router();
+app.use('/${String(
+        componentName
+      )}', ${String(
+        componentName
+      )});
+module.exports = app;
+
+Thanks \u2764\uFE0F for choosing PressFlow`
     );
-    console.log(
-      "\x1B[36mTo now use the route, use this example code block:\x1B[0m\n"
-    );
-    console.log(
-      `import ${String(componentName)} from './routes/${String(componentName)}'`
-    );
-    console.log("const app = express.Router();");
-    console.log(
-      `app.use('/${String(componentName)}', ${String(componentName)});`
-    );
-    console.log("module.exports = app;");
-    console.log("");
-    console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
   } catch (err) {
     console.error("Error:", err);
   }

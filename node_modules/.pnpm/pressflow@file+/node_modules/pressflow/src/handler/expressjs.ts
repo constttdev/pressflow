@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { select, cancel, text, confirm } from "@clack/prompts";
+import { select, cancel, text, confirm, outro } from "@clack/prompts";
 
 const fsPromises = fs.promises;
 
@@ -66,22 +66,19 @@ export async function handler() {
       }
     }
 
-    console.log(
-      `Successfully created the route named ${String(componentName)}!`
+    outro(
+      `Successfully created the route named ${String(
+        componentName
+      )}!\n\x1b[36mTo now use the route, use this example code block:\x1b[0m\nimport ${String(
+        componentName
+      )} from './routes/${String(
+        componentName
+      )}\nconst app = express.Router();\napp.use('/${String(
+        componentName
+      )}', ${String(
+        componentName
+      )});\nmodule.exports = app;\n\nThanks ❤️ for choosing PressFlow`
     );
-    console.log(
-      "\x1b[36mTo now use the route, use this example code block:\x1b[0m\n"
-    );
-    console.log(
-      `import ${String(componentName)} from './routes/${String(componentName)}'`
-    );
-    console.log("const app = express.Router();");
-    console.log(
-      `app.use('/${String(componentName)}', ${String(componentName)});`
-    );
-    console.log("module.exports = app;");
-    console.log("");
-    console.log("\nThanks ❤️ for choosing PressFlow");
   } catch (err) {
     console.error("Error:", err);
   }
