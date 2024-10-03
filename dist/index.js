@@ -88,15 +88,17 @@ async function handler() {
         process.exit(0);
       }
     }
-    console.log(
-      `Successfully created the component named ${String(componentName)}!`
+    (0, import_prompts.outro)(
+      `Successfully created the component named ${String(
+        componentName
+      )}!
+\x1B[36mTo now use the component, add this line of code from below to your +layoute.svelte in your routes folder\x1B[0m
+<${String(
+        componentName
+      )}></${String(componentName)}>
+
+Thanks \u2764\uFE0F for choosing PressFlow`
     );
-    console.log(
-      "\x1B[36mTo now use the component, add this line of code from below to your +layoute.svelte in your routes folder\x1B[0m\n"
-    );
-    console.log(`<${String(componentName)}></${String(componentName)}>`);
-    console.log("");
-    console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
   } catch (err) {
     console.error("\x1B[30m\x1B[1mError:", err + "\x1B[0m");
   }
@@ -178,21 +180,18 @@ async function handler2() {
           process.exit(0);
         }
       }
-      console.log(
-        `Successfully created a command named ${String(
+      (0, import_prompts2.outro)(
+        `Sucessfully created command name ${String(
           componentName
-        )} with the description ${String(componentDescription)}!`
+        )} with description ${String(
+          componentDescription
+        )}
+\x1B[36mTo now use the command create a new folder in the commands directory or move it in one. After that register it and check that you have a command handler!\x1B[0m
+\x1B[30m\x1B[1mCommand Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1B[0m
+\x1B[30m\x1B[1mCommand Register: https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands\x1B[0m
+
+Thanks \u2764\uFE0F for choosing PressFlow`
       );
-      console.log(
-        "\x1B[36mTo now use the command create a new folder in the commands directory or move it in one. After that register it and check that you have a command handler!\x1B[0m\n"
-      );
-      console.log(
-        "\x1B[30m\x1B[1mCommand Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1B[0m"
-      );
-      console.log(
-        "\x1B[30m\x1B[1mCommand Register: https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands\x1B[0m"
-      );
-      console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
     } catch (e) {
       console.log("\x1B[31m\x1B[1mError: " + e + "\x1B[0m");
     }
@@ -249,17 +248,15 @@ async function handler2() {
           process.exit(0);
         }
       }
-      console.log(
-        `Successfully created a event with the trigger ${String(
+      (0, import_prompts2.outro)(
+        `Sucessfully created a event with the trigger ${String(
           componentTrigger
-        )}!`
+        )}!
+\x1B[36mTo now use the event, just start the bot!\x1B[0m
+\x1B[30m\x1B[1mEvent Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1B[0m
+
+Thanks \u2764\uFE0F for choosing PressFlow`
       );
-      console.log("\x1B[36mTo now use the event, just start the bot!\x1B[0m\n");
-      console.log(
-        "\x1B[30m\x1B[1mEvent Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1B[0m"
-      );
-      console.log("");
-      console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
     } catch (e) {
       console.log("\x1B[31m\x1B[1mError: " + e + "\x1B[0m");
     }
@@ -322,22 +319,26 @@ async function handler3() {
         process.exit(0);
       }
     }
-    console.log(
-      `Successfully created the route named ${String(componentName)}!`
+    (0, import_prompts3.outro)(
+      `Successfully created the route named ${String(
+        componentName
+      )}!
+\x1B[36mTo now use the route, use this example code block:\x1B[0m
+import ${String(
+        componentName
+      )} from './routes/${String(
+        componentName
+      )}
+const app = new Hono();
+app.route('/${String(
+        componentName
+      )}', ${String(
+        componentName
+      )});
+export default app;
+
+Thanks \u2764\uFE0F for choosing PressFlow`
     );
-    console.log(
-      "\x1B[36mTo now use the route, use this example code block:\x1B[0m\n"
-    );
-    console.log(
-      `import ${String(componentName)} from './routes/${String(componentName)}'`
-    );
-    console.log("const app = new Hono();");
-    console.log(
-      `app.route('/${String(componentName)}', ${String(componentName)});`
-    );
-    console.log("export default app;");
-    console.log("");
-    console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
   } catch (err) {
     console.error("\x1B[30m\x1B[1mError:", err + "\x1B[0m");
   }
@@ -400,22 +401,26 @@ async function handler4() {
         process.exit(0);
       }
     }
-    console.log(
-      `Successfully created the route named ${String(componentName)}!`
+    (0, import_prompts4.outro)(
+      `Successfully created the route named ${String(
+        componentName
+      )}!
+\x1B[36mTo now use the route, use this example code block:\x1B[0m
+import ${String(
+        componentName
+      )} from './routes/${String(
+        componentName
+      )}
+const app = express.Router();
+app.use('/${String(
+        componentName
+      )}', ${String(
+        componentName
+      )});
+module.exports = app;
+
+Thanks \u2764\uFE0F for choosing PressFlow`
     );
-    console.log(
-      "\x1B[36mTo now use the route, use this example code block:\x1B[0m\n"
-    );
-    console.log(
-      `import ${String(componentName)} from './routes/${String(componentName)}'`
-    );
-    console.log("const app = express.Router();");
-    console.log(
-      `app.use('/${String(componentName)}', ${String(componentName)});`
-    );
-    console.log("module.exports = app;");
-    console.log("");
-    console.log("\nThanks \u2764\uFE0F for choosing PressFlow");
   } catch (err) {
     console.error("Error:", err);
   }

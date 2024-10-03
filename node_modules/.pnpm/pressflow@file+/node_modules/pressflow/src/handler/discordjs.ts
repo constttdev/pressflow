@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { select, cancel, text, confirm } from "@clack/prompts";
+import { select, cancel, text, confirm, outro } from "@clack/prompts";
 
 const fsPromises = fs.promises;
 
@@ -85,22 +85,13 @@ export async function handler() {
         }
       }
 
-      // need to make it use outro from @clack/prompts too
-      console.log(
-        `Successfully created a command named ${String(
+      outro(
+        `Sucessfully created command name ${String(
           componentName
-        )} with the description ${String(componentDescription)}!`
+        )} with description ${String(
+          componentDescription
+        )}\n\x1b[36mTo now use the command create a new folder in the commands directory or move it in one. After that register it and check that you have a command handler!\x1b[0m\n\x1b[30m\x1b[1mCommand Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1b[0m\n\x1b[30m\x1b[1mCommand Register: https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands\x1b[0m\n\nThanks ❤️ for choosing PressFlow`
       );
-      console.log(
-        "\x1b[36mTo now use the command create a new folder in the commands directory or move it in one. After that register it and check that you have a command handler!\x1b[0m\n"
-      );
-      console.log(
-        "\x1b[30m\x1b[1mCommand Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1b[0m"
-      );
-      console.log(
-        "\x1b[30m\x1b[1mCommand Register: https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands\x1b[0m"
-      );
-      console.log("\nThanks ❤️ for choosing PressFlow");
     } catch (e) {
       console.log("\x1b[31m\x1b[1mError: " + e + "\x1b[0m");
     }
@@ -167,17 +158,11 @@ export async function handler() {
         }
       }
 
-      console.log(
-        `Successfully created a event with the trigger ${String(
+      outro(
+        `Sucessfully created a event with the trigger ${String(
           componentTrigger
-        )}!`
+        )}!\n\x1b[36mTo now use the event, just start the bot!\x1b[0m\n\x1b[30m\x1b[1mEvent Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1b[0m\n\nThanks ❤️ for choosing PressFlow`
       );
-      console.log("\x1b[36mTo now use the event, just start the bot!\x1b[0m\n");
-      console.log(
-        "\x1b[30m\x1b[1mEvent Handler: https://discordjs.guide/creating-your-bot/command-handling.html#executing-commands\x1b[0m"
-      );
-      console.log("");
-      console.log("\nThanks ❤️ for choosing PressFlow");
     } catch (e) {
       console.log("\x1b[31m\x1b[1mError: " + e + "\x1b[0m");
     }
