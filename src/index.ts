@@ -30,6 +30,8 @@ export async function main() {
     if (selectFramework === "hono") {
       honoHandler();
     }
+  } else {
+    console.log("Please use `pressflow gen` to generate components!");
   }
 }
 

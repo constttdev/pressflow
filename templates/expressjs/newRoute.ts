@@ -1,4 +1,5 @@
-const express = require("express");
+import express from "express";
+
 const {{componentName}} = express.Router();
 
 {{componentName}}.get("/{{componentName}}", (req, res) => {

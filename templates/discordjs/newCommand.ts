@@ -1,12 +1,12 @@
-const { SlashCommandBuilder } = require("discord.js");
+import { SlashCommandBuilder } from "discord.js";
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName("{{componentName}}")
     .setDescription("{{componentDescription}}"),
   async execute(interaction) {
     await interaction.reply(
-      "Why did the C++ programmer get lost? He took the wrong branch"
+      "Why did the C++ programmer get lost? He took the wrong branch",
     );
   },
 };

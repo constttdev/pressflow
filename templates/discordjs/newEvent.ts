@@ -1,8 +1,8 @@
-const { Events } = require('discord.js');
+import { Events } from "discord.js";
 
-module.exports = {
+export default {
 	name: Events.{{componentTrigger}},
 	execute(/* parameters you need to add */) {
-		console.log("Why did the C++ programmer get lost? He took the wrong branch")
+		console.log("Why did the C++ programmer get lost? He took the wrong branch");
 	},
 };
